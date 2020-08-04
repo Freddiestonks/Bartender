@@ -1,0 +1,72 @@
+{
+  "en": [
+    {
+    "Name": "Negroni",
+    "url": "https://firebasestorage.googleapis.com/v0/b/foodtime-7a19f.appspot.com/o/Negroni.jpg?alt=media&token=df7e001f-929a-4a80-9a23-c4f17c7b2695",
+    "ingredients" :
+    [{"Name" :"Campari",
+      "Quantity" : 20
+    },
+      {"Name" :"Vermouth",
+        "Quantity" : 20
+      },{"Name" :"Gin",
+      "Quantity" : 20
+    }],
+    "percentage" : "40%"
+
+    },
+    {
+      "Name": "Cosmopolitan",
+      "url": "https://firebasestorage.googleapis.com/v0/b/foodtime-7a19f.appspot.com/o/Cosmopolitan.jpg?alt=media&token=9ecc0068-f293-40a5-932c-1e904705e499",
+      "ingredients" :
+      [{"Name" :"Vodka",
+        "Quantity" : 20
+      },
+        {"Name" :"Triple Sec",
+          "Quantity" : 20
+        },{"Name" :"Lime Juice",
+        "Quantity" : 20
+      },{"Name" :"Cranberry Juice",
+        "Quantity" : 20
+      }],
+      "percentage" : "40%"
+
+    },
+    {
+      "Name": "Margarita",
+      "url": "https://firebasestorage.googleapis.com/v0/b/foodtime-7a19f.appspot.com/o/Margarita.jpg?alt=media&token=83fe4b55-d6bc-48b3-9815-b462771f326f",
+      "ingredients" :  [{"Name" :"Triple Sec",
+        "Quantity" : 20
+      },
+        {"Name" :"Tequila",
+          "Quantity" : 20
+        },{"Name" :"Lime Juice",
+          "Quantity" : 20
+        }],
+      "percentage" : "40%"
+
+    },
+    {
+      "Name": "Caffo",
+      "url": "https://firebasestorage.googleapis.com/v0/b/foodtime-7a19f.appspot.com/o/Margarita.jpg?alt=media&token=83fe4b55-d6bc-48b3-9815-b462771f326f",
+      "ingredients" : [{"Name" :"Jessica",
+                        "Quantity" : 20
+                        },
+                        {"Name" :"Malibù",
+                          "Quantity" : 20
+                        },{"Name" :"Lime Juice",
+                          "Quantity" : 20
+                        }],
+      "percentage" : "84%"
+
+    },{
+      "Name": "Water with ice",
+      "url": "https://firebasestorage.googleapis.com/v0/b/foodtime-7a19f.appspot.com/o/Margarita.jpg?alt=media&token=83fe4b55-d6bc-48b3-9815-b462771f326f",
+      "ingredients" :  [{"Name" :"Water",
+        "Quantity" : 20
+      }],
+      "percentage" : "40%"
+
+    }
+  ]
+  }

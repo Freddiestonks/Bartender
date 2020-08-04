@@ -52,7 +52,11 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle: 'Drinks',
+            headerTintColor:'#fff',
+            headerStyle: {
+                backgroundColor: '#ff6f61'
+            }, }}
       />
     </TabOneStack.Navigator>
   );
@@ -66,7 +70,11 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerTitle: 'My Bar',
+            headerTintColor:'#fff',
+            headerStyle: {
+                backgroundColor: '#ff6f61'
+            }, }}
       />
     </TabTwoStack.Navigator>
   );
