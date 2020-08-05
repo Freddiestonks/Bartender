@@ -1,0 +1,65 @@
+{
+  "en": [
+    {
+    "Name": "Apple",
+    "Unit": "units",
+    "url": "https://cdn.eso.org/images/screen/eso1907a.jpg"
+    },
+    {
+      "Name": "Aperol"
+    },
+    {
+      "Name": "Banana",
+      "Unit": "units",
+      "url": "file://../assets/images/Drinks/Negroni.jpg"
+    },
+    {
+      "Name": "Blueberry",
+      "Unit": "grams"
+    },
+    {
+      "Name": "Campari",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/foodtime-7a19f.appspot.com/o/Negroni.jpg?alt=media&token=df7e001f-929a-4a80-9a23-c4f17c7b2695"
+    },
+    {
+      "Name": "Coca-Cola"
+    },
+    {
+      "Name": "Cranberry Juice"
+    },
+    {
+      "Name": "Triple Sec"
+    },
+    {
+      "Name": "Gin",
+      "url" : ""
+    },
+    {
+      "Name": "Jessica",
+      "Unit": "units"
+    },
+    {
+      "Name": "Lime Juice",
+      "url" : ""
+    },
+    {
+      "Name": "Pasta",
+      "Unit": "grams"
+    },
+    {
+      "Name": "Tequila"
+    },
+    {
+      "Name": "Vermouth"
+    },
+    {
+      "Name": "Vodka"
+    },
+    {
+      "Name": "Whiskey"
+    },
+    {
+      "Name": "Malibù"
+    }
+  ]
+  }
