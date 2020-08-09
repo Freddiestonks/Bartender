@@ -36,7 +36,7 @@ export default function TabTwoScreen() {
                     <TouchableOpacity onPress={ async () => {
                         if (items.includes(item)) {
                             try {
-                                let filtered: string[] = items.filter(function (value, index, arr) {
+                                let filtered: string[] = items.filter(function (value) {
                                     return value != item;
                                 });
                                 const jsonValue = JSON.stringify(filtered);
@@ -77,6 +77,7 @@ export default function TabTwoScreen() {
                         {/*List of all possible foods*/}
                         <FlatList
                             data={foodList}
+                            contentContainerStyle={{alignItems:"center"}}
                             renderItem={({item}) => (
                                 <TouchableOpacity onPress={async () => {
                                     if (!items.includes(item.Name)) {

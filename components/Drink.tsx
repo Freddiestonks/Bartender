@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     dvxDrink: {
         //fontFamily: "roboto-700",
         color: "#121212",
-        fontSize: 17,
+        fontSize: 16,
         fontWeight: "bold"
     },
     percentage: {

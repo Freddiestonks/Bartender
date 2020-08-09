@@ -9,9 +9,13 @@ import DrinkCardComplete from "../components/DrinkCardComplete";
 import DrinkCardMissing from "../components/DrinkCardMissing";
 import * as Drinks from "../assets/Drinks.json"
 import AsyncStorage from "@react-native-community/async-storage";
+
 export default function TabOneScreen() {
     const [drinksList,setDrinks] = React.useState<any[]>([]);
     const [missingDrinkList,setMissingDrinkList] = React.useState<any[]>([])
+
+
+
 
     function checkArray(ingredients:any,f:string[]) {
         let test = true;
@@ -28,7 +32,6 @@ export default function TabOneScreen() {
             loadItem().then(r  => {
                 setDrinks(Drinks.en.filter(({ingredients}) => checkArray(ingredients,r)));
                 setMissingDrinkList(Drinks.en.filter(({ingredients}) => !checkArray(ingredients,r)));
-
             })
         }, [])
     );
@@ -48,10 +51,6 @@ export default function TabOneScreen() {
             <DrinkCardMissing name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} />
         )} />
             </View>
-
-            {/*<DrinkCardMissing/>*/}
-        {/*<Text style={styles.title}>Tab One</Text>*/}
-      {/*<EditScreenInfo path="/screens/TabOneScreen.tsx" />*/}
         </ScrollView>
     </View>
   );
@@ -62,10 +61,10 @@ export default function TabOneScreen() {
 
 async function loadItem() {
     try {
-        const jsonValue = await AsyncStorage.getItem('bar')
+        const jsonValue = await AsyncStorage.getItem('bar');
         return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
-        // error reading value
+       console.log(e);
     }
 }
 

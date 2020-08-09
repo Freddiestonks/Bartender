@@ -2,49 +2,55 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Drink from "./Drink";
 import EntypoIcon from "react-native-vector-icons/Entypo";
+import * as Drinks from "../assets/Drinks.json";
+import AsyncStorage from "@react-native-community/async-storage";
 
-function DrinkCardMissing({name,alcoholPercentage,ingredients}:{ name: string, alcoholPercentage: string, ingredients: any }) {
+function DrinkCardMissing({name,alcoholPercentage,ingredients}:{ name: string, alcoholPercentage: string, ingredients: any[] }) {
+
     return (
         <View style={styles.container}>
             <View style={styles.drinkStack}>
                 <Drink name={name} alcoholPercentage={alcoholPercentage}   props={styles.drink}/>
-                <View style={styles.group2}>
-                    <View style={styles.rect2}>
-                        <View style={styles.icon2Row}>
-                            <EntypoIcon
-    name="cross"
-    style={styles.icon2}
-    />
-                            <Text style={styles.whiskey2}>+11</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.group}>
-                    <View style={styles.rect}>
-                        <View style={styles.iconRow}>
-                            <EntypoIcon
-    name="cross"
-    style={styles.icon}
-    />
-                            <Text style={styles.whiskey}>Whiskey</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.group3}>
-                    <View style={styles.rect3}>
-                        <View style={styles.icon3Row}>
-                            <EntypoIcon
-    name="cross"
-    style={styles.icon3}
-    />
-                            <Text style={styles.whiskey3}>Whiskey</Text>
-                        </View>
-                    </View>
-                </View>
+    {/*            <View style={styles.group2}>*/}
+    {/*                <View style={styles.rect2}>*/}
+    {/*                    <View style={styles.icon2Row}>*/}
+    {/*                        <EntypoIcon*/}
+    {/*                            name="cross"*/}
+    {/*                            style={styles.icon2}*/}
+    {/*                            />*/}
+    {/*                        <Text style={styles.whiskey2}>+11</Text>*/}
+    {/*                    </View>*/}
+    {/*                </View>*/}
+    {/*            </View>*/}
+
+    {/*            <View style={styles.group}>*/}
+    {/*                <View style={styles.rect}>*/}
+    {/*                    <View style={styles.iconRow}>*/}
+    {/*                        <EntypoIcon*/}
+    {/*name="cross"*/}
+    {/*style={styles.icon}*/}
+    {/*/>*/}
+    {/*                        <Text style={styles.whiskey}>{}</Text>*/}
+    {/*                    </View>*/}
+    {/*                </View>*/}
+    {/*            </View>*/}
+    {/*            <View style={styles.group3}>*/}
+    {/*                <View style={styles.rect3}>*/}
+    {/*                    <View style={styles.icon3Row}>*/}
+    {/*                        <EntypoIcon*/}
+    {/*name="cross"*/}
+    {/*style={styles.icon3}*/}
+    {/*/>*/}
+    {/*                        <Text style={styles.whiskey3}>Whiskey</Text>*/}
+    {/*                    </View>*/}
+    {/*                </View>*/}
+    {/*            </View>*/}
             </View>
         </View>
     );
 }
+
+
 
 const styles = StyleSheet.create({
     container: {},
