@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
     text: {
         fontWeight: "bold",
         color: "#121212",
-        fontSize: 20,
+        fontSize: 15,
         marginLeft: 22,
-        marginTop: 19
+        marginTop: 24
     },
     imageRow: {
         height: 69  ,

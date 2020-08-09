@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Dimensions, FlatList, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {useFocusEffect} from "@react-navigation/core";
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -7,54 +8,42 @@ import {Divider, AirbnbRating, Overlay} from "react-native-elements";
 import DrinkCardComplete from "../components/DrinkCardComplete";
 import DrinkCardMissing from "../components/DrinkCardMissing";
 import * as Drinks from "../assets/Drinks.json"
+import AsyncStorage from "@react-native-community/async-storage";
 export default function TabOneScreen() {
-    const [fridge,setFridge] = React.useState([]);
+    const [drinksList,setDrinks] = React.useState<any[]>([]);
+    const [missingDrinkList,setMissingDrinkList] = React.useState<any[]>([])
+
+    function checkArray(ingredients:any,f:string[]) {
+        let test = true;
+        ingredients.forEach((ingredient: { Name: string; }) => {
+            if(!f.includes(ingredient.Name)){
+                test = false;
+            }});
+        return test;
+
+    }
+
+    useFocusEffect(
+        React.useCallback(() => {
+            loadItem().then(r  => {
+                setDrinks(Drinks.en.filter(({ingredients}) => checkArray(ingredients,r)));
+                setMissingDrinkList(Drinks.en.filter(({ingredients}) => !checkArray(ingredients,r)));
+
+            })
+        }, [])
+    );
     return (
     <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{alignItems:"center"}}>
-        { fridge.length >0 ?
-            <FlatList
-                data={fridge}
-                renderItem={({item}) => (
-                    <View style={styles.cardElement}>
-                        <TouchableOpacity onPress={() => {
-                        }}>
-                            <Text style={{
-                                color: '#ff6f61',
-                                fontWeight: "bold",
-                                paddingVertical: 15,
-                                paddingHorizontal: 5
-                            }}>{item}</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                )}
-            /> : <Text style={{fontWeight:"bold",paddingVertical:10}} >There are no available drinks with your ingredients</Text>
-        }
-
-            {/**/}
-
-                <FlatList data={Drinks.en
+                {drinksList.length>0?
+                <FlatList data={drinksList
                 } renderItem={({item}) => (
                     <DrinkCardComplete name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} />
-                )} />
-
-            {/**/}
-
-
-
-            {/*<DrinkCard alcoholPercentage={"22%"} ingredients={[{"Name" :"Jessica",*/}
-            {/*    "Quantity" : 20*/}
-            {/*},*/}
-            {/*    {"Name" :"Malibù",*/}
-            {/*        "Quantity" : 20*/}
-            {/*    },{"Name" :"Lime Juice",*/}
-            {/*        "Quantity" : 20*/}
-            {/*    }]} name={"pino"}/>*/}
+                )} />: <Text>There are no available drinks</Text>}
         <View style={styles.separator} lightColor="#ff6f61" darkColor="rgba(255,255,255,0.1)" />
         <Text style={{fontWeight:"bold",paddingVertical:10}}>You're still missing:</Text>
-        <FlatList data={Drinks.en
+        <FlatList data={missingDrinkList
         } renderItem={({item}) => (
             <DrinkCardMissing name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} />
         )} />
@@ -66,6 +55,18 @@ export default function TabOneScreen() {
         </ScrollView>
     </View>
   );
+}
+
+
+
+
+async function loadItem() {
+    try {
+        const jsonValue = await AsyncStorage.getItem('bar')
+        return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {
+        // error reading value
+    }
 }
 
 const styles = StyleSheet.create({

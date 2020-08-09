@@ -5,8 +5,10 @@ import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommun
 import {Overlay,AirbnbRating} from "react-native-elements";
 function DrinkCardComplete({name,alcoholPercentage,ingredients}:{ name: string, alcoholPercentage: string, ingredients: any }) {
     const [isOpen, setOpen] = React.useState(false);
-    return (
 
+
+
+    return (
         <View style={styles.container}>
             { isOpen ?
                 <Overlay isVisible={isOpen} onBackdropPress={() => setOpen(false)}>
@@ -67,8 +69,7 @@ function DrinkCardComplete({name,alcoholPercentage,ingredients}:{ name: string, 
             </View>
             </TouchableOpacity>
         </View>
-
-    );
+   );
 }
 
 function textShortener(text:string){
