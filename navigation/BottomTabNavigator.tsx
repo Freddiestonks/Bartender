@@ -1,13 +1,15 @@
-import { Ionicons } from '@expo/vector-icons';
+import {EvilIcons, Ionicons} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import {Button} from "react-native";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -25,7 +27,7 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
-      <BottomTab.Screen
+    <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
         options={{
@@ -46,7 +48,7 @@ function TabBarIcon(props: { name: string; color: string }) {
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
+function TabOneNavigator({navigation}:{navigation:any}) {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
@@ -56,7 +58,10 @@ function TabOneNavigator() {
             headerTintColor:'#fff',
             headerStyle: {
                 backgroundColor: '#ff6f61'
-            }, }}
+            },headerRight: () => (
+                <EvilIcons name="user" size={40} color="white" style={{paddingHorizontal: 10}}  onPress={() => navigation.navigate('User')}/>
+
+            ), }}
       />
     </TabOneStack.Navigator>
   );
@@ -64,7 +69,7 @@ function TabOneNavigator() {
 
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
-function TabTwoNavigator() {
+function TabTwoNavigator({navigation}:{navigation:any}) {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
@@ -74,7 +79,10 @@ function TabTwoNavigator() {
             headerTintColor:'#fff',
             headerStyle: {
                 backgroundColor: '#ff6f61'
-            }, }}
+            }, headerRight: () => (
+                <EvilIcons name="user" size={40} color="white" style={{paddingHorizontal: 10}}  onPress={() => navigation.navigate('User')}/>
+
+            ),}}
       />
     </TabTwoStack.Navigator>
   );

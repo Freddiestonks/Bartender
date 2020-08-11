@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Dimensions, FlatList, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {useFocusEffect} from "@react-navigation/core";
-
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import {Divider, AirbnbRating, Overlay} from "react-native-elements";
@@ -12,10 +11,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 export default function TabOneScreen() {
     const [drinksList,setDrinks] = React.useState<any[]>([]);
-    const [missingDrinkList,setMissingDrinkList] = React.useState<any[]>([])
-
-
-
+    const [missingDrinkList,setMissingDrinkList] = React.useState<any[]>([]);
 
     function checkArray(ingredients:any,f:string[]) {
         let test = true;
@@ -24,17 +20,18 @@ export default function TabOneScreen() {
                 test = false;
             }});
         return test;
-
     }
 
     useFocusEffect(
         React.useCallback(() => {
             loadItem().then(r  => {
-                setDrinks(Drinks.en.filter(({ingredients}) => checkArray(ingredients,r)));
-                setMissingDrinkList(Drinks.en.filter(({ingredients}) => !checkArray(ingredients,r)));
+                if (r!=null){
+                    setDrinks(Drinks.en.filter(({ingredients}) => checkArray(ingredients,r)));
+                    setMissingDrinkList(Drinks.en.filter(({ingredients}) => !checkArray(ingredients,r)));}
             })
         }, [])
     );
+
     return (
     <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>

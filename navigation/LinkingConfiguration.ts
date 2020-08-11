@@ -18,6 +18,15 @@ export default {
           },
         },
       },
+      User: {
+            screens: {
+                UserScreen: {
+                    screens: {
+                        UserScreen: 'User',
+                    },
+                },
+            },
+        },
       NotFound: '*',
     },
   },
