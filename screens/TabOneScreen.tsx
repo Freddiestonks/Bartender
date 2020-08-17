@@ -39,13 +39,13 @@ export default function TabOneScreen() {
                 {drinksList.length>0?
                 <FlatList data={drinksList
                 } renderItem={({item}) => (
-                    <DrinkCardComplete name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} />
+                    <DrinkCardComplete name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} imageSrc={item.image} />
                 )} />: <Text>There are no available drinks</Text>}
         <View style={styles.separator} lightColor="#ff6f61" darkColor="rgba(255,255,255,0.1)" />
         <Text style={{fontWeight:"bold",paddingVertical:10}}>You're still missing:</Text>
         <FlatList data={missingDrinkList
         } renderItem={({item}) => (
-            <DrinkCardMissing name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} />
+            <DrinkCardMissing name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} imageSrc={item.image} />
         )} />
             </View>
         </ScrollView>

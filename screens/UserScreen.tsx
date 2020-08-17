@@ -126,8 +126,6 @@ export default function UserScreen ({navigation}:{navigation: any}) {
             <UserScreenElement Type={"Name"} Value={name} UserId={userID}/>
             <Divider style={{ backgroundColor:  "#ff6f61"  }}/>
             <UserScreenElement Type={"Username"} Value={username} UserId={userID}/>
-            <Divider style={{ backgroundColor:  "#ff6f61"  }}/>
-            <UserScreenElement Type={"Favorite Food"} Value={food} UserId={userID}/>
           </View> : <View style={{alignSelf:"center",justifyContent:"center"}}><Text style={{paddingTop:40}}>Caricamentor.....</Text></View>
           }
         </View>

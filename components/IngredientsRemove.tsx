@@ -3,11 +3,11 @@ import { StyleSheet, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import Ingredients from "./Ingredients";
 
-function RemoveIngredient({ingredientName}:{ingredientName:string}) {
+function RemoveIngredient({ingredientName,imgSrc}:{ingredientName:string,imgSrc:any}) {
     return (
         <View style={[styles.container]}>
             <View style={styles.harambeStack}>
-                <Ingredients props={styles.harambe} ingredientName={ingredientName}/>
+                <Ingredients props={styles.harambe} ingredientName={ingredientName} imageSrc={imgSrc}/>
                 <Icon name="ios-remove" style={styles.icon}/>
             </View>
         </View>

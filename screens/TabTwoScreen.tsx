@@ -50,7 +50,7 @@ export default function TabTwoScreen() {
                             alert("This product is already in the fridge");
                         }
                     } }>
-                        <RemoveIngredient ingredientName={item.toString()}/>
+                        <RemoveIngredient ingredientName={item.toString()} imgSrc={null}/>
                     </TouchableOpacity>
             )}/>
             <TouchableOpacity onPress={() => setBottomOpened(true)} style={styles.button}>
@@ -93,7 +93,7 @@ export default function TabTwoScreen() {
                                         alert("This product is already in the fridge");
                                     }
                                 }}>
-                                    <AddIngredients ingredientName={item.Name}/>
+                                    <AddIngredients ingredientName={item.Name} imgSrc={item.image}/>
                                 </TouchableOpacity>
                             )}
                         />

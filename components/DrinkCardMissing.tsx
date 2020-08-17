@@ -5,12 +5,11 @@ import EntypoIcon from "react-native-vector-icons/Entypo";
 import * as Drinks from "../assets/Drinks.json";
 import AsyncStorage from "@react-native-community/async-storage";
 
-function DrinkCardMissing({name,alcoholPercentage,ingredients}:{ name: string, alcoholPercentage: string, ingredients: any[] }) {
-
+function DrinkCardMissing({name,alcoholPercentage,ingredients ,imageSrc}:{ name: string, alcoholPercentage: string, ingredients: any[] ,imageSrc:any}) {
     return (
         <View style={styles.container}>
             <View style={styles.drinkStack}>
-                <Drink name={name} alcoholPercentage={alcoholPercentage}   props={styles.drink}/>
+                <Drink name={name} alcoholPercentage={alcoholPercentage}   props={styles.drink} imageSrc={imageSrc}/>
     {/*            <View style={styles.group2}>*/}
     {/*                <View style={styles.rect2}>*/}
     {/*                    <View style={styles.icon2Row}>*/}
