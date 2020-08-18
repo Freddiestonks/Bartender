@@ -26,8 +26,8 @@ export default function TabOneScreen() {
         React.useCallback(() => {
             loadItem().then(r  => {
                 if (r!=null){
-                    setDrinks(Drinks.en.filter(({ingredients}) => checkArray(ingredients,r)));
-                    setMissingDrinkList(Drinks.en.filter(({ingredients}) => !checkArray(ingredients,r)));}
+                    setDrinks(Drinks.en.filter(({ingredients}) => checkArray(ingredients,nameRetriever(r))));
+                    setMissingDrinkList(Drinks.en.filter(({ingredients}) => !checkArray(ingredients,nameRetriever(r))));}
             })
         }, [])
     );
@@ -39,7 +39,7 @@ export default function TabOneScreen() {
                 {drinksList.length>0?
                 <FlatList data={drinksList
                 } renderItem={({item}) => (
-                    <DrinkCardComplete name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} imageSrc={item.image} />
+                    <DrinkCardComplete name={item.Name} alcoholPercentage={item.percentage} ingredients={item.ingredients} imageSrc={item.image} recipe={item.recipe} />
                 )} />: <Text>There are no available drinks</Text>}
         <View style={styles.separator} lightColor="#ff6f61" darkColor="rgba(255,255,255,0.1)" />
         <Text style={{fontWeight:"bold",paddingVertical:10}}>You're still missing:</Text>
@@ -54,7 +54,17 @@ export default function TabOneScreen() {
 }
 
 
+function nameRetriever(list: any[]) {
+    let i;
+    let newList = [];
+    console.log(list);
 
+    for (i=0; i < list.length; i++){
+        newList.push(list[i].Name);
+    }
+    console.log(newList);
+    return newList;
+}
 
 async function loadItem() {
     try {

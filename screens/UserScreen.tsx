@@ -8,7 +8,7 @@ import Colors from "../constants/Colors";
 import * as ImagePicker from "expo-image-picker";
 import * as Constants from "expo-constants";
 import * as firebase from "firebase";
-import {MaterialIcons} from "@expo/vector-icons";
+import {Entypo, MaterialIcons} from "@expo/vector-icons";
 
 
 
@@ -19,17 +19,16 @@ export default function UserScreen ({navigation}:{navigation: any}) {
   const [food, setFood] = React.useState("");
   const [username, setUsername] = React.useState("");
   // @ts-ignore
-  const [userID, setUID] = React.useState<any>(firebase.auth().currentUser.uid.toString());
+  const [userID, setUID] = React.useState<any|null>(firebase.auth().currentUser);
 
 
 
-  if(!isLoadingComplete) {
+  if(!isLoadingComplete&&firebase.auth().currentUser!=null) {
 
 
       dbh
       .collection('Users')
           // @ts-ignore
-
           .doc(firebase.auth().currentUser.uid)
       .get()
       .then(
@@ -99,7 +98,7 @@ export default function UserScreen ({navigation}:{navigation: any}) {
     }
     console.log(pickerResult);
     let output = handleImage(pickerResult.base64,pickerResult.uri,pickerResult.type);
-    postNewValues(output,userID);
+    postNewValues(output,userID.uid.toString());
     setUserImage(output);
 
   };
@@ -107,9 +106,10 @@ export default function UserScreen ({navigation}:{navigation: any}) {
 
     return (
         <View style={styles.container}>
-            <MaterialIcons style={{paddingTop: 40, position:"absolute", paddingLeft: 20, zIndex: 1,color:"#ff6f61"}} name="arrow-back" size={24}
+            <MaterialIcons style={{paddingTop: 40, position:"absolute", left: 20, zIndex: 1,color:"#ff6f61"}} name="arrow-back" size={24}
                            onPress={() => navigation.navigate('Root')}/>
-
+            <Entypo style={{paddingTop: 40, position:"absolute", right: 20, zIndex: 1,color:"#ff6f61"}} name="log-out" size={20}
+                           onPress={() => {firebase.auth().signOut().then(() => setLoadingComplete(false))}}/>
             {isLoadingComplete ?
 
           <View style={styles.bottomContainer}>
@@ -123,10 +123,10 @@ export default function UserScreen ({navigation}:{navigation: any}) {
               />
             </View>
             <Divider style={{ backgroundColor: "#ff6f61" }}/>
-            <UserScreenElement Type={"Name"} Value={name} UserId={userID}/>
+            <UserScreenElement Type={"Name"} Value={name} UserId={userID.uid.toString()}/>
             <Divider style={{ backgroundColor:  "#ff6f61"  }}/>
-            <UserScreenElement Type={"Username"} Value={username} UserId={userID}/>
-          </View> : <View style={{alignSelf:"center",justifyContent:"center"}}><Text style={{paddingTop:40}}>Caricamentor.....</Text></View>
+            <UserScreenElement Type={"Username"} Value={username} UserId={userID.uid.toString()}/>
+          </View> : <View style={{alignSelf:"center",justifyContent:"center"}}><Text style={{paddingTop:150}}>Loading.....</Text></View>
           }
         </View>
   );

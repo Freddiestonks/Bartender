@@ -13,7 +13,7 @@ export default function TabTwoScreen() {
     const [isBottomOpened, setBottomOpened] = React.useState(false);
     const [search, setSearch] = React.useState("");
     const [foodList, setFoodList] = React.useState(food.en);
-    const [items, addItem] = React.useState<string[]>([]);
+    const [items, addItem] = React.useState<any[]>([]);
     const [isLoadingComplete, setLoadingComplete] = React.useState<boolean>(false);
 
     if (!isLoadingComplete) {
@@ -44,13 +44,12 @@ export default function TabTwoScreen() {
                             } catch (e) {
                                 // saving error
                             }
-                            // storeData(items.concat(item.Name)).then(r => addItem(items.concat(item.Name)));
                             setBottomOpened(false);
                         } else {
                             alert("This product is already in the fridge");
                         }
                     } }>
-                        <RemoveIngredient ingredientName={item.toString()} imgSrc={null}/>
+                        <RemoveIngredient ingredientName={item.Name} imgSrc={item.image}/>
                     </TouchableOpacity>
             )}/>
             <TouchableOpacity onPress={() => setBottomOpened(true)} style={styles.button}>
@@ -80,10 +79,10 @@ export default function TabTwoScreen() {
                             contentContainerStyle={{alignItems:"center"}}
                             renderItem={({item}) => (
                                 <TouchableOpacity onPress={async () => {
-                                    if (!items.includes(item.Name)) {
+                                    if (!items.includes(item)) {
                                         try {
-                                            const jsonValue = JSON.stringify(items.concat(item.Name));
-                                            await AsyncStorage.setItem('bar', jsonValue).then(() => addItem(items.concat(item.Name)));
+                                            const jsonValue = JSON.stringify(items.concat(item));
+                                            await AsyncStorage.setItem('bar', jsonValue).then(() => addItem(items.concat(item)));
                                         } catch (e) {
                                             // saving error
                                         }
