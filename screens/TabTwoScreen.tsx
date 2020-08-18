@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {  View } from '../components/Themed';
 import AddIngredients from "../components/IngredientsAdd";
 import RemoveIngredient from "../components/IngredientsRemove";
-import * as food from "../assets/Foods.json";
+import * as food from "../assets/Ingredients.json";
 import {SearchBar} from "react-native-elements";
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;

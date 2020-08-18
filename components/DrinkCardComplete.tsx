@@ -15,16 +15,19 @@ function DrinkCardComplete({name,alcoholPercentage,ingredients,imageSrc, recipe}
             { isOpen ?
                 // @ts-ignore
                 <Overlay  overlayStyle={{marginVertical:50, marginHorizontal:50, minWidth:"70%",alignContent:"center",alignItems:"center",justifyContent:"flex-start"} } isVisible={isOpen} onBackdropPress={() => setOpen(false)}>
-                    <ScrollView>
+                    <ScrollView contentContainerStyle={{alignContent:"center",alignItems:"center"}}>
                     <Text style={styles.drinkName}>{name}</Text>
                     <Image source={imageSrc == null? {uri: defaultImage} : {uri: imageSrc}}   style={{ width: 100, height: 100, margin:20}}/>
+                        { alcoholPercentage == null ? null :
+                            <Text style={{fontSize: 17, paddingVertical:5, color: "#000"}}>Alcohol percentage: {alcoholPercentage}</Text>
+                        }
                     { ingredients == null ? null :
                         <Text style={{fontSize: 17, fontWeight: "bold", color: "#000"}}>Ingredients:</Text>
                     }
                     {ingredients == null ? null :
                     <FlatList data={ingredients
                     } renderItem={({item}) => (
-                        <Text>{item.Name} - {item.Quantity}</Text>
+                        <Text>{item.Name} - {item.Quantity} {item.Unit != null ? item.Unit : "ml"}</Text>
                     )} />}
                     {recipe==null ? null:
                     <Text style={{fontWeight:"bold"}}>
