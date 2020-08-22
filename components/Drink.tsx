@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         marginTop: 3
     },
     dvxDrinkColumn: {
-        width: 120,
+        width: 200,
         marginLeft: 16,
         marginBottom: 27
     },

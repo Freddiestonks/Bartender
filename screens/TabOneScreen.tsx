@@ -57,12 +57,9 @@ export default function TabOneScreen() {
 function nameRetriever(list: any[]) {
     let i;
     let newList = [];
-    console.log(list);
-
     for (i=0; i < list.length; i++){
         newList.push(list[i].Name);
     }
-    console.log(newList);
     return newList;
 }
 
@@ -71,7 +68,6 @@ async function loadItem() {
         const jsonValue = await AsyncStorage.getItem('bar');
         return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
-       console.log(e);
     }
 }
 
@@ -94,53 +90,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
-// function DrinkCard({name,alcoholPercentage,ingredients}:{ name: string, alcoholPercentage: string, ingredients: any }) {
-//     const [isOpen, setOpen] = React.useState(false);
-//     const width = Dimensions.get('window').width;
-//     return (
-//         <View>
-//             { isOpen ?
-//                 <Overlay isVisible={isOpen} onBackdropPress={() => setOpen(false)}>
-//                     <View>
-//                         <Text style={{fontWeight:"bold", color: "#000",fontSize: 24,alignSelf:"center",paddingVertical:10}}>{name}</Text>
-//                         {/*<Image source={{uri: imageSrc}} style={{resizeMode: 'contain',alignSelf:"center", height: width / 3, width: width / 3}}/>*/}
-//                         <AirbnbRating/>
-//                         <Text style={{fontWeight:"bold",paddingVertical:5}}>Ingredients:</Text>
-//                         <FlatList data={ingredients} renderItem={({item}) => <Text>{item.Name} - {item.Quantity}</Text>}/>
-//                         <Text>Alcohol Percentage: {alcoholPercentage}</Text>
-//                     </View>
-//                 </Overlay>
-//                 : null
-//             }
-//             <View style={{
-//                 //flex: 1,
-//                 paddingHorizontal: 10,
-//                 borderRadius: 10,
-//                 borderColor: '#aaa',
-//                 borderWidth: 1,
-//                 marginBottom: 2,
-//                 backgroundColor: '#fff'
-//             }}>
-//                 <TouchableOpacity onPress={() => setOpen(true)}>
-//                     <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
-//                         {/*<Image source={{uri: imageSrc}} style={{resizeMode: 'contain', height: width / 4, width: width / 4}}/>*/}
-//                         <View style={{
-//                             flex: 1,
-//                             flexDirection: 'column',
-//                             width: (3 * width / 4),
-//                             height: width / 4
-//                         }}>
-//                             <View style={{flex: 1, justifyContent: 'flex-end'}}>
-//                                 <Text style={{paddingHorizontal: 10, fontWeight: "bold"}}>{name}</Text>
-//                             </View>
-//                             <View style={{flex: 2, borderRadius: 30}}>
-//                                 <Text style={{paddingHorizontal: 10, color: "#aaa"}}>Alcohol Content: {alcoholPercentage}</Text>
-//                             </View>
-//                         </View>
-//                     </View>
-//                 </TouchableOpacity>
-//             </View>
-//         </View>
-//     )
-// }

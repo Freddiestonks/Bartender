@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {  View } from '../components/Themed';
 import AddIngredients from "../components/IngredientsAdd";
 import RemoveIngredient from "../components/IngredientsRemove";
-import * as food from "../assets/Ingredients.json";
+import * as ingredients from "../assets/Ingredients.json";
 import {SearchBar} from "react-native-elements";
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -12,7 +12,7 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
 export default function TabTwoScreen() {
     const [isBottomOpened, setBottomOpened] = React.useState(false);
     const [search, setSearch] = React.useState("");
-    const [foodList, setFoodList] = React.useState(food.en);
+    const [foodList, setFoodList] = React.useState(ingredients.en);
     const [items, addItem] = React.useState<any[]>([]);
     const [isLoadingComplete, setLoadingComplete] = React.useState<boolean>(false);
 
@@ -65,10 +65,10 @@ export default function TabTwoScreen() {
                             containerStyle={{
                                 borderBottomWidth: 1, borderColor: '#999', borderRadius: 20
                             }}
-                            placeholder="Search Food..."
+                            placeholder="Search Ingredients..."
                             onChangeText={text => {
                                 setSearch(text);
-                                setFoodList(food.en.filter(({Name}) => Name.toLowerCase().includes(text.toLowerCase())))
+                                setFoodList(ingredients.en.filter(({Name}) => Name.toLowerCase().includes(text.toLowerCase())))
                             }}
                             platform={"android"}
                             value={search}
@@ -79,7 +79,7 @@ export default function TabTwoScreen() {
                             contentContainerStyle={{alignItems:"center"}}
                             renderItem={({item}) => (
                                 <TouchableOpacity onPress={async () => {
-                                    if (!items.includes(item)) {
+                                    if (!items.includes(item) && isLoadingComplete) {
                                         try {
                                             const jsonValue = JSON.stringify(items.concat(item));
                                             await AsyncStorage.setItem('bar', jsonValue).then(() => addItem(items.concat(item)));
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   },
     cardContainer: {
         backgroundColor: '#fff',
-        flex:4,
+        flex:2,
         justifyContent: 'flex-start',
         alignContent: 'center',
         flexDirection: 'column',
