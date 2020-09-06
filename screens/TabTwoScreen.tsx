@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         borderRadius: 20,
         width: DEVICE_WIDTH,
-        paddingBottom:45,
+        paddingBottom:60,
         // height: DEVICE_HEIGHT*3/4,
     },
     cardBack: {
