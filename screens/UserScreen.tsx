@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {dbh} from "../database/Firebase";
 import UserScreenElement from "../components/UserScreenElement";
 //import {LoadingObject} from "../components/LoadingObject";
@@ -126,7 +126,8 @@ export default function UserScreen ({navigation}:{navigation: any}) {
             <UserScreenElement Type={"Name"} Value={name} UserId={userID.uid.toString()}/>
             <Divider style={{ backgroundColor:  "#ff6f61"  }}/>
             <UserScreenElement Type={"Username"} Value={username} UserId={userID.uid.toString()}/>
-          </View> : <View style={{alignSelf:"center",justifyContent:"center"}}><Text style={{paddingTop:150}}>Loading.....</Text></View>
+          </View> : <View style={{flex: 1,
+                    justifyContent: "center",    flexDirection: "row",padding:10}}><ActivityIndicator size="large" color="#ff6f61" /></View>
           }
         </View>
   );
